@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "publisher": "formulahendry",
     "icon": "logo.png",
+    "preview": true,
     "engines": {
         "vscode": "^1.8.0"
     },
