@@ -6,8 +6,8 @@ Integrate PlatformIO into Visual Studio Code on top of [PlatformIO Core](http://
 
 ## Features
 
-* Build PlatformIO project 
-* Upload firmware to devices
+* Build PlatformIO project specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
+* Upload firmware to devices specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Open Serial Monitor
 
 ## Prerequisites
@@ -50,3 +50,7 @@ By default, anonymous telemetry data collection is turned on to understand user 
 ## Change Log
 
 See Change Log [here](CHANGELOG.md)
+
+## Issues
+
+Currently, the extension is in the very initial phase. If you find any bug or have any suggestion/feature request, please join the chat on [Gitter](https://gitter.im/formulahendry/vscode-platformio) or submit the [issues](https://github.com/formulahendry/vscode-platformio/issues) to the GitHub Repo.
