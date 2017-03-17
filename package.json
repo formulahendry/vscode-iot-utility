@@ -1,7 +1,7 @@
 {
     "name": "platformio",
     "displayName": "PlatformIO",
-    "description": "PlatformIO for Visual Studio Code",
+    "description": "PlatformIO for Arduino, Espressif, Raspberry Pi, mbed and more",
     "version": "0.0.1",
     "publisher": "formulahendry",
     "icon": "logo.png",
@@ -37,36 +37,45 @@
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "platformio.build",
-            "title": "PlatformIO: Build"
-        }, {
-            "command": "platformio.upload",
-            "title": "PlatformIO: Upload"
-        }, {
-            "command": "platformio.openSerialMonitor",
-            "title": "PlatformIO: Open Serial Monitor"
-        }],
+                "command": "platformio.build",
+                "title": "PlatformIO: Build"
+            },
+            {
+                "command": "platformio.upload",
+                "title": "PlatformIO: Upload"
+            },
+            {
+                "command": "platformio.openSerialMonitor",
+                "title": "PlatformIO: Open Serial Monitor"
+            }
+        ],
         "keybindings": [{
-            "command": "platformio.build",
-            "key": "ctrl+alt+b"
-        }, {
-            "command": "platformio.upload",
-            "key": "ctrl+alt+u"
-        }, {
-            "command": "platformio.openSerialMonitor",
-            "key": "ctrl+alt+s"
-        }],
+                "command": "platformio.build",
+                "key": "ctrl+alt+b"
+            },
+            {
+                "command": "platformio.upload",
+                "key": "ctrl+alt+u"
+            },
+            {
+                "command": "platformio.openSerialMonitor",
+                "key": "ctrl+alt+s"
+            }
+        ],
         "menus": {
             "editor/context": [{
-                "command": "platformio.build",
-                "group": "navigation@2"
-            }, {
-                "command": "platformio.upload",
-                "group": "navigation@3"
-            }, {
-                "command": "platformio.openSerialMonitor",
-                "group": "navigation@4"
-            }]
+                    "command": "platformio.build",
+                    "group": "navigation@2"
+                },
+                {
+                    "command": "platformio.upload",
+                    "group": "navigation@3"
+                },
+                {
+                    "command": "platformio.openSerialMonitor",
+                    "group": "navigation@4"
+                }
+            ]
         },
         "configuration": {
             "type": "object",
@@ -89,11 +98,12 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "mocha": "^2.3.3",
+        "tslint": "^4.5.1",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
     },
     "dependencies": {
         "applicationinsights": "^0.19.0"
