@@ -9,6 +9,7 @@ Integrate PlatformIO into Visual Studio Code on top of [PlatformIO Core](http://
 * Build PlatformIO project specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Upload firmware to devices specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Open Serial Monitor
+* Search for library in [PlatformIO Library Registry](http://platformio.org/lib)
 
 ## Prerequisites
 
@@ -30,13 +31,17 @@ Integrate PlatformIO into Visual Studio Code on top of [PlatformIO Core](http://
 
 ![build](images/build.gif)
 
-* **Upload firmware to devices**: use shortcut `Ctrl+Alt+u`, or press `F1` and then select/type `PlatformIO: Upload`, or right click the Text Editor and then click `PlatformIO: Upload` in context menu
+* **Upload firmware to devices**: use shortcut `Ctrl+Alt+U`, or press `F1` and then select/type `PlatformIO: Upload`, or right click the Text Editor and then click `PlatformIO: Upload` in context menu
 
 ![upload](images/upload.gif)
 
 * **Open Serial Monitor**: use shortcut `Ctrl+Alt+S`, or press `F1` and then select/type `PlatformIO: Open Serial Monitor`, or right click the Text Editor and then click `PlatformIO: Open Serial Monitor` in context menu
 
 ![openSerialMonitor](images/openSerialMonitor.gif)
+
+* **Search for library**: Click the `Library` item in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Search Library`, then type the query to search for library. Refer to the [User Guide](http://docs.platformio.org/en/latest/userguide/lib/cmd_search.html#description) for the query syntax.
+
+![searchLibrary](images/searchLibrary.gif)
 
 ## Telemetry data
 
