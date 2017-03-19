@@ -59,3 +59,7 @@ See Change Log [here](CHANGELOG.md)
 ## Issues
 
 Currently, the extension is in the very initial phase. If you find any bug or have any suggestion/feature request, please join the chat on [Gitter](https://gitter.im/formulahendry/vscode-platformio) or submit the [issues](https://github.com/formulahendry/vscode-platformio/issues) to the GitHub Repo.
+
+## Contributions
+
+Contributions are warmly welcome! Please follow the [Contribution Guide](CONTRIBUTING.md) to setup development environment. 
