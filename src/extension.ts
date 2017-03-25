@@ -21,6 +21,10 @@ export function activate(context: vscode.ExtensionContext) {
         platformio.searchLibrary();
     }));
 
+    context.subscriptions.push(vscode.commands.registerCommand("platformio.installLibrary", () => {
+        platformio.installLibrary();
+    }));
+
     context.subscriptions.push(vscode.window.onDidCloseTerminal((closedTerminal: vscode.Terminal) => {
         platformio.onDidCloseTerminal(closedTerminal);
     }));

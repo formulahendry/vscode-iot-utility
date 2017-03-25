@@ -12,6 +12,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * Upload firmware to devices specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Open Serial Monitor
 * Search for library in [PlatformIO Library Registry](http://platformio.org/lib)
+* Install library from [PlatformIO Library Registry](http://platformio.org/lib)
 
 ## Prerequisites
 
@@ -44,6 +45,10 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * **Search for library**: Click the `Library` item in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Search Library`, then type the query to search for library. Refer to the [User Guide](http://docs.platformio.org/en/latest/userguide/lib/cmd_search.html#description) for the query syntax.
 
 ![searchLibrary](images/searchLibrary.gif)
+
+* **Install library**: Click the `Download` icon in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Install Library`, then type library id or name to install. Refer to the [User Guide](http://docs.platformio.org/en/latest/userguide/lib/cmd_install.html#usage) for the detailed usage.
+
+![installLibrary](images/installLibrary.gif)
 
 ## Telemetry data
 

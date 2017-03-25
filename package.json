@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "PlatformIO",
     "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "preview": true,
@@ -33,7 +33,8 @@
         "onCommand:platformio.build",
         "onCommand:platformio.upload",
         "onCommand:platformio.openSerialMonitor",
-        "onCommand:platformio.searchLibrary"
+        "onCommand:platformio.searchLibrary",
+        "onCommand:platformio.installLibrary"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -50,8 +51,12 @@
                 "title": "PlatformIO: Open Serial Monitor"
             },
             {
-                "command": "platformio.searchLibrary ",
+                "command": "platformio.searchLibrary",
                 "title": "PlatformIO: Search Library"
+            },
+            {
+                "command": "platformio.installLibrary",
+                "title": "PlatformIO: Install Library"
             }
         ],
         "keybindings": [{
