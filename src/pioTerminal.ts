@@ -8,11 +8,15 @@ export class PioTerminal {
         this._terminal = vscode.window.createTerminal("PlatformIO");
     }
 
-    public showAndRun(text: string): void {
+    public show(): void {
         if (this._terminal === null) {
             this._terminal = vscode.window.createTerminal("PlatformIO");
         }
         this._terminal.show();
+    }
+
+    public showAndRun(text: string): void {
+        this.show();
         this._terminal.sendText(text);
     }
 

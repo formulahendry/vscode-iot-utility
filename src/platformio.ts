@@ -22,8 +22,9 @@ export class PlatformIO {
     }
 
     public openSerialMonitor(): void {
-        this._pioTerminal.showAndRun("platformio device monitor");
-        AppInsightsClient.sendEvent("openSerialMonitor");
+        let baudRate = vscode.workspace.getConfiguration("platformio").get<number>("baudRate");
+        this._pioTerminal.showAndRun(`platformio device monitor --baud ${baudRate}`);
+        AppInsightsClient.sendEvent("openSerialMonitor", { baudRate: baudRate.toString() });
     }
 
     public searchLibrary(): void {
@@ -54,27 +55,37 @@ export class PlatformIO {
         });
     }
 
+    public openTerminal(): void {
+        this._pioTerminal.show();
+    }
+
     public onDidCloseTerminal(closedTerminal: vscode.Terminal): void {
         this._pioTerminal.onDidCloseTerminal(closedTerminal);
     }
 
     private createStatusBarItems(): void {
-        let openSerialMonitorStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 2);
+        let openSerialMonitorStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 3);
         openSerialMonitorStatusBarItem.command = "platformio.openSerialMonitor";
         openSerialMonitorStatusBarItem.text = "$(plug) Serial Monitor";
         openSerialMonitorStatusBarItem.tooltip = "Open Serial Monitor";
         openSerialMonitorStatusBarItem.show();
 
-        let searchLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+        let searchLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 2);
         searchLibraryStatusBarItem.command = "platformio.searchLibrary";
         searchLibraryStatusBarItem.text = "$(search) Library";
         searchLibraryStatusBarItem.tooltip = "Search PlatformIO Library";
         searchLibraryStatusBarItem.show();
 
-        let installLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
+        let installLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
         installLibraryStatusBarItem.command = "platformio.installLibrary";
         installLibraryStatusBarItem.text = "$(cloud-download)";
         installLibraryStatusBarItem.tooltip = "Install PlatformIO Library";
         installLibraryStatusBarItem.show();
+
+        let openTerminalStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
+        openTerminalStatusBarItem.command = "platformio.openTerminal";
+        openTerminalStatusBarItem.text = "$(terminal)";
+        openTerminalStatusBarItem.tooltip = "Open PlatformIO Terminal";
+        openTerminalStatusBarItem.show();
     }
 }

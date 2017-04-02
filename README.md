@@ -11,8 +11,10 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * Build PlatformIO project specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Upload firmware to devices specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
 * Open Serial Monitor
+* Set baud rate for Serial Monitor
 * Search for library in [PlatformIO Library Registry](http://platformio.org/lib)
 * Install library from [PlatformIO Library Registry](http://platformio.org/lib)
+* Quick way to open PlatformIO Terminal
 
 ## Prerequisites
 
@@ -49,6 +51,14 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * **Install library**: Click the `Download` icon in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Install Library`, then type library id or name to install. Refer to the [User Guide](http://docs.platformio.org/en/latest/userguide/lib/cmd_install.html#usage) for the detailed usage.
 
 ![installLibrary](images/installLibrary.gif)
+
+* **Quick way to open PlatformIO Terminal**: Click the `Terminal` icon in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Open Terminal`
+
+![openTerminal](images/openTerminal.png)
+
+## Settings
+
+* `platformio.baudRate`: Set baud rate for Serial Monitor. (Default is **9600**)
 
 ## Telemetry data
 

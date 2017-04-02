@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "PlatformIO",
     "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "preview": true,
@@ -16,8 +16,8 @@
         "IoT",
         "MCU",
         "Arduino",
-        "mbed",
-        "ESP8266"
+        "ESP8266",
+        "Terminal"
     ],
     "bugs": {
         "url": "https://github.com/formulahendry/vscode-platformio/issues",
@@ -34,7 +34,8 @@
         "onCommand:platformio.upload",
         "onCommand:platformio.openSerialMonitor",
         "onCommand:platformio.searchLibrary",
-        "onCommand:platformio.installLibrary"
+        "onCommand:platformio.installLibrary",
+        "onCommand:platformio.openTerminal"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -57,6 +58,10 @@
             {
                 "command": "platformio.installLibrary",
                 "title": "PlatformIO: Install Library"
+            },
+            {
+                "command": "platformio.openTerminal",
+                "title": "PlatformIO: Open Terminal"
             }
         ],
         "keybindings": [{
@@ -95,6 +100,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Whether to enable anonymous usage collection."
+                },
+                "platformio.baudRate": {
+                    "type": "number",
+                    "default": 9600,
+                    "description": "Set baud rate for Serial Monitor."
                 }
             }
         }
