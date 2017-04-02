@@ -57,6 +57,7 @@ export class PlatformIO {
 
     public openTerminal(): void {
         this._pioTerminal.show();
+        AppInsightsClient.sendEvent("openTerminal");
     }
 
     public onDidCloseTerminal(closedTerminal: vscode.Terminal): void {
