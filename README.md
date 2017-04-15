@@ -59,6 +59,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 ## Settings
 
 * `platformio.baudRate`: Set baud rate for Serial Monitor. (Default is **9600**)
+* `platformio.showHelpInfo`: Whether to show help info when opening PlatformIO Terminal. (Default is **true**)
 
 ## Telemetry data
 

@@ -1,3 +1,6 @@
+## 0.0.6 (2017-04-15)
+* Show help info when opening PlatformIO Terminal
+
 ## 0.0.5 (2017-04-02)
 * Add telemetry for 'Open PlatformIO Terminal'
 

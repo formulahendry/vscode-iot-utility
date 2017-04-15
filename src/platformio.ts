@@ -56,8 +56,13 @@ export class PlatformIO {
     }
 
     public openTerminal(): void {
-        this._pioTerminal.show();
-        AppInsightsClient.sendEvent("openTerminal");
+        let showHelpInfo = vscode.workspace.getConfiguration("platformio").get<boolean>("showHelpInfo");
+        if (showHelpInfo) {
+            this._pioTerminal.showAndRun("platformio --help");
+        } else {
+            this._pioTerminal.show();
+        }
+        AppInsightsClient.sendEvent("openTerminal", { showHelpInfo: showHelpInfo.toString() });
     }
 
     public onDidCloseTerminal(closedTerminal: vscode.Terminal): void {

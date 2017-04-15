@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "PlatformIO",
     "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "preview": true,
@@ -105,6 +105,11 @@
                     "type": "number",
                     "default": 9600,
                     "description": "Set baud rate for Serial Monitor."
+                },
+                "platformio.showHelpInfo": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to show help info when opening PlatformIO Terminal."
                 }
             }
         }
