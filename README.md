@@ -15,6 +15,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * Search for library in [PlatformIO Library Registry](http://platformio.org/lib)
 * Install library from [PlatformIO Library Registry](http://platformio.org/lib)
 * Quick way to open PlatformIO Terminal
+* Add Include Path to `c_cpp_properties.json` for [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
 ## Prerequisites
 
@@ -55,6 +56,8 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * **Quick way to open PlatformIO Terminal**: Click the `Terminal` icon in the Status Bar at the bottom, or press `F1` and then select/type `PlatformIO: Open Terminal`
 
 ![openTerminal](images/openTerminal.png)
+
+* **Add Include Path to `c_cpp_properties.json` for C/C++ extension**: Press `F1` and then select/type `PlatformIO: Add Include Path to Settings`. Wait for some seconds, then the PlatformIO libraries will be automatically added into Include Path of `c_cpp_properties.json`
 
 ## Settings
 

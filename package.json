@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "PlatformIO",
     "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "preview": true,
@@ -35,7 +35,8 @@
         "onCommand:platformio.openSerialMonitor",
         "onCommand:platformio.searchLibrary",
         "onCommand:platformio.installLibrary",
-        "onCommand:platformio.openTerminal"
+        "onCommand:platformio.openTerminal",
+        "onCommand:platformio.addIncludePath"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -62,6 +63,10 @@
             {
                 "command": "platformio.openTerminal",
                 "title": "PlatformIO: Open Terminal"
+            },
+            {
+                "command": "platformio.addIncludePath",
+                "title": "PlatformIO: Add Include Path to Settings"
             }
         ],
         "keybindings": [{

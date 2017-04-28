@@ -1,3 +1,6 @@
+## 0.0.7 (2017-04-28)
+* Add Include Path to `c_cpp_properties.json`
+
 ## 0.0.6 (2017-04-15)
 * Show help info when opening PlatformIO Terminal
 
