@@ -17,6 +17,10 @@ export function activate(context: vscode.ExtensionContext) {
         platformio.openSerialMonitor();
     }));
 
+    context.subscriptions.push(vscode.commands.registerCommand("platformio.buildUploadAndOpenSerialMonitor", () => {
+        platformio.buildUploadAndOpenSerialMonitor();
+    }));
+
     context.subscriptions.push(vscode.commands.registerCommand("platformio.searchLibrary", () => {
         platformio.searchLibrary();
     }));

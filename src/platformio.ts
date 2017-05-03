@@ -31,6 +31,13 @@ export class PlatformIO {
         AppInsightsClient.sendEvent("openSerialMonitor", { baudRate: baudRate.toString() });
     }
 
+    public buildUploadAndOpenSerialMonitor(): void {
+        this.build();
+        this.upload();
+        this.openSerialMonitor();
+        AppInsightsClient.sendEvent("buildUploadAndOpenSerialMonitor");
+    }
+
     public searchLibrary(): void {
         let query = "CANCELED";
         vscode.window.showInputBox({

@@ -1,3 +1,6 @@
+## 0.0.8 (2017-05-03)
+* [#4](https://github.com/formulahendry/vscode-platformio/issues/4): Add command to `Build`, `Upload` and `Open Serial Monitor` one by one
+
 ## 0.0.7 (2017-04-28)
 * Add Include Path to `c_cpp_properties.json`
 

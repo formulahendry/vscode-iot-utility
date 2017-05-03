@@ -16,6 +16,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * Install library from [PlatformIO Library Registry](http://platformio.org/lib)
 * Quick way to open PlatformIO Terminal
 * Add Include Path to `c_cpp_properties.json` for [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+* Combined `Build`, `Upload` and `Open Serial Monitor` with one command
 
 ## Prerequisites
 
@@ -33,15 +34,15 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 ## Usage
 
-* **Build PlatformIO project**: use shortcut `Ctrl+Alt+B`, or press `F1` and then select/type `PlatformIO: Build`, or right click the Text Editor and then click `PlatformIO: Build` in context menu
+* **Build PlatformIO project**: Use shortcut `Ctrl+Alt+B`, or press `F1` and then select/type `PlatformIO: Build`, or right click the Text Editor and then click `PlatformIO: Build` in context menu
 
 ![build](images/build.gif)
 
-* **Upload firmware to devices**: use shortcut `Ctrl+Alt+U`, or press `F1` and then select/type `PlatformIO: Upload`, or right click the Text Editor and then click `PlatformIO: Upload` in context menu
+* **Upload firmware to devices**: Use shortcut `Ctrl+Alt+U`, or press `F1` and then select/type `PlatformIO: Upload`, or right click the Text Editor and then click `PlatformIO: Upload` in context menu
 
 ![upload](images/upload.gif)
 
-* **Open Serial Monitor**: use shortcut `Ctrl+Alt+S`, or press `F1` and then select/type `PlatformIO: Open Serial Monitor`, or right click the Text Editor and then click `PlatformIO: Open Serial Monitor` in context menu
+* **Open Serial Monitor**: Use shortcut `Ctrl+Alt+S`, or press `F1` and then select/type `PlatformIO: Open Serial Monitor`, or right click the Text Editor and then click `PlatformIO: Open Serial Monitor` in context menu
 
 ![openSerialMonitor](images/openSerialMonitor.gif)
 
@@ -58,6 +59,8 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 ![openTerminal](images/openTerminal.png)
 
 * **Add Include Path to `c_cpp_properties.json` for C/C++ extension**: Press `F1` and then select/type `PlatformIO: Add Include Path to Settings`. Wait for some seconds, then the PlatformIO libraries will be automatically added into Include Path of `c_cpp_properties.json`
+
+* **Combined `Build`, `Upload` and `Open Serial Monitor` with one command**: Use shortcut `Ctrl+Alt+A`, or press `F1` and then select/type `PlatformIO: Build, Upload and Open Serial Monitor`. `Build`, `Upload` and `Open Serial Monitor` will be run one by one.
 
 ## Settings
 
