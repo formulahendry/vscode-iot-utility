@@ -154,28 +154,34 @@ export class PlatformIO {
     }
 
     private createStatusBarItems(): void {
-        let openSerialMonitorStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 3);
+        let openSerialMonitorStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 5);
         openSerialMonitorStatusBarItem.command = "platformio.openSerialMonitor";
         openSerialMonitorStatusBarItem.text = "$(plug) Serial Monitor";
         openSerialMonitorStatusBarItem.tooltip = "Open Serial Monitor";
         openSerialMonitorStatusBarItem.show();
 
-        let searchLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 2);
+        let searchLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 4);
         searchLibraryStatusBarItem.command = "platformio.searchLibrary";
         searchLibraryStatusBarItem.text = "$(search) Library";
         searchLibraryStatusBarItem.tooltip = "Search PlatformIO Library";
         searchLibraryStatusBarItem.show();
 
-        let installLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+        let installLibraryStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 3);
         installLibraryStatusBarItem.command = "platformio.installLibrary";
         installLibraryStatusBarItem.text = "$(cloud-download)";
         installLibraryStatusBarItem.tooltip = "Install PlatformIO Library";
         installLibraryStatusBarItem.show();
 
-        let openTerminalStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 0);
+        let openTerminalStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 2);
         openTerminalStatusBarItem.command = "platformio.openTerminal";
         openTerminalStatusBarItem.text = "$(terminal)";
         openTerminalStatusBarItem.tooltip = "Open PlatformIO Terminal";
         openTerminalStatusBarItem.show();
+
+        let buildUploadAndOpenSerialMonitorStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 1);
+        buildUploadAndOpenSerialMonitorStatusBarItem.command = "platformio.buildUploadAndOpenSerialMonitor";
+        buildUploadAndOpenSerialMonitorStatusBarItem.text = " $(arrow-right) ";
+        buildUploadAndOpenSerialMonitorStatusBarItem.tooltip = "Build, Upload and Open Serial Monitor";
+        buildUploadAndOpenSerialMonitorStatusBarItem.show();
     }
 }

@@ -1,3 +1,6 @@
+## 0.0.9 (2017-05-10)
+* Add 'Build, Upload and Open Serial Monitor' icon in Status Bar
+
 ## 0.0.8 (2017-05-03)
 * [#4](https://github.com/formulahendry/vscode-platformio/issues/4): Add command to `Build`, `Upload` and `Open Serial Monitor` one by one
 
