@@ -29,7 +29,7 @@
         "url": "https://github.com/formulahendry/vscode-platformio.git"
     },
     "activationEvents": [
-        "*",
+        "workspaceContains:platformio.ini",
         "onCommand:platformio.build",
         "onCommand:platformio.upload",
         "onCommand:platformio.openSerialMonitor",
