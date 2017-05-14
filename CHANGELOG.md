@@ -1,3 +1,6 @@
+## 0.1.0 (2017-05-14)
+* Only activate extension when the workspace has a platformio.ini file
+
 ## 0.0.9 (2017-05-10)
 * Add 'Build, Upload and Open Serial Monitor' icon in Status Bar
 
