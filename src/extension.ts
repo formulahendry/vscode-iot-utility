@@ -4,6 +4,7 @@ import { PlatformIO } from "./platformio";
 
 export function activate(context: vscode.ExtensionContext) {
     let platformio = new PlatformIO();
+    context.subscriptions.push(platformio);
 
     context.subscriptions.push(vscode.commands.registerCommand("platformio.build", () => {
         platformio.build();

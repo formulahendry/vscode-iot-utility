@@ -124,6 +124,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Whether to show help info when opening PlatformIO Terminal."
+                },
+                "platformio.autoUpdateIncludes": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to add include path to settings automatically."
                 }
             }
         }
