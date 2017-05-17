@@ -112,7 +112,9 @@ export class PlatformIO implements Disposable {
                 this.showErrorToAddIncludePath();
             }
         } finally {
-            AppInsightsClient.sendEvent("addIncludePath");
+            if (!silent) {
+                AppInsightsClient.sendEvent("addIncludePath");
+            }
         }
     }
 
