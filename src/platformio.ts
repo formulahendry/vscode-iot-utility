@@ -14,12 +14,12 @@ export class PlatformIO implements Disposable {
     private _debounceTimer: NodeJS.Timer;
     private _autoUpdateIncludesDisposables: Disposable[] = [];
     private _disposables: Disposable[] = [];
+    private _excludePaths: RegExp[] = [];
 
     constructor() {
         this._pioTerminal = new PioTerminal();
         this.createStatusBarItems();
-        vscode.workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(), this, this._disposables);
-        this.configureAutoUpdateIncludes();
+        this.initializeAutoUpdateIncludes();
     }
 
     public dispose(): void {
@@ -122,6 +122,22 @@ export class PlatformIO implements Disposable {
         this._pioTerminal.onDidCloseTerminal(closedTerminal);
     }
 
+    private initializeAutoUpdateIncludes(): void {
+        this._excludePaths.push(/\.c$/);
+        this._excludePaths.push(/\.cpp$/);
+        this._excludePaths.push(/\.h$/);
+        this._excludePaths.push(/\.ino$/);
+        this._excludePaths.push(/\.json$/);
+        this._excludePaths.push(/\.md$/);
+        this._excludePaths.push(/\.txt$/);
+        this._excludePaths.push(RegExp("^(" + this.getEscapedPath(".pioenvs") + ")(\/|$)"));
+        this._excludePaths.push(RegExp("^(" + this.getEscapedPath(".vscode") + ")(\/|$)"));
+        this._excludePaths.push(RegExp("^" + this.getEscapedPath(".gitignore") + "$"));
+        this._excludePaths.push(RegExp("^" + this.getEscapedPath("platformio.ini") + "$"));
+        vscode.workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(), this, this._disposables);
+        this.configureAutoUpdateIncludes();
+    }
+
     private configureAutoUpdateIncludes(): void {
         const autoUpdateIncludes = vscode.workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
         if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
@@ -142,9 +158,16 @@ export class PlatformIO implements Disposable {
         this._autoUpdateIncludesEnabled = autoUpdateIncludes;
     }
 
+    private getEscapedPath(input: string): string {
+        return ("\/" + path.join(vscode.workspace.rootPath, input).replace(/\\/g, "/")).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
     private fileSystemDidChange(e: vscode.Uri) {
-        clearTimeout(this._debounceTimer);
-        this._debounceTimer = setTimeout(() => this.addIncludePath(true), 5000);
+        let skip: boolean = this._excludePaths.some((filter) => filter.test(e.path));
+        if (!skip) {
+            clearTimeout(this._debounceTimer);
+            this._debounceTimer = setTimeout(() => this.addIncludePath(true), 5000);
+        }
     }
 
     private disposeAutoUpdateIncludes(): void {
