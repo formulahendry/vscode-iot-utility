@@ -124,29 +124,32 @@ export class PlatformIO implements Disposable {
     }
 
     private configureAutoUpdateIncludes(): void {
-        const autoUpdateIncludes = vscode.workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
-        if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
-            this.buildFolderList();
+        const cppExtension = vscode.extensions.getExtension("ms-vscode.cpptools");
+        if (cppExtension) {
+            const autoUpdateIncludes = vscode.workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
+            if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
+                this.buildFolderList();
 
-            // Watch .piolibdeps and lib folders
-            const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/{.piolibdeps,lib}/**");
-            this._autoUpdateIncludesDisposables.push(fileSystemWatcher);
-            fileSystemWatcher.onDidCreate((e: vscode.Uri) => this.fileSystemDidCreate(e), this, this._autoUpdateIncludesDisposables);
-            fileSystemWatcher.onDidDelete((e: vscode.Uri) => this.fileSystemDidDelete(e), this, this._autoUpdateIncludesDisposables);
+                // Watch .piolibdeps and lib folders
+                const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/{.piolibdeps,lib}/**");
+                this._autoUpdateIncludesDisposables.push(fileSystemWatcher);
+                fileSystemWatcher.onDidCreate((e: vscode.Uri) => this.fileSystemDidCreate(e), this, this._autoUpdateIncludesDisposables);
+                fileSystemWatcher.onDidDelete((e: vscode.Uri) => this.fileSystemDidDelete(e), this, this._autoUpdateIncludesDisposables);
 
-            // Watch platformio.ini file
-            const iniFileWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/platformio.ini");
-            this._autoUpdateIncludesDisposables.push(iniFileWatcher);
-            iniFileWatcher.onDidChange((e: vscode.Uri) => this.addIncludePath(true), this, this._autoUpdateIncludesDisposables);
-            iniFileWatcher.onDidCreate((e: vscode.Uri) => this.addIncludePath(true), this, this._autoUpdateIncludesDisposables);
+                // Watch platformio.ini file
+                const iniFileWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/platformio.ini");
+                this._autoUpdateIncludesDisposables.push(iniFileWatcher);
+                iniFileWatcher.onDidChange((e: vscode.Uri) => this.addIncludePath(true), this, this._autoUpdateIncludesDisposables);
+                iniFileWatcher.onDidCreate((e: vscode.Uri) => this.addIncludePath(true), this, this._autoUpdateIncludesDisposables);
+            }
+
+            if (!autoUpdateIncludes && this._autoUpdateIncludesEnabled) {
+                this._folderList = undefined;
+                this.disposeAutoUpdateIncludes();
+            }
+
+            this._autoUpdateIncludesEnabled = autoUpdateIncludes;
         }
-
-        if (!autoUpdateIncludes && this._autoUpdateIncludesEnabled) {
-            this._folderList = undefined;
-            this.disposeAutoUpdateIncludes();
-        }
-
-        this._autoUpdateIncludesEnabled = autoUpdateIncludes;
     }
 
     private fileSystemDidCreate(e: vscode.Uri): void {
