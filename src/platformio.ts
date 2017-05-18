@@ -129,6 +129,10 @@ export class PlatformIO implements Disposable {
             const autoUpdateIncludes = vscode.workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
             if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
                 this.buildFolderList();
+                const configFilePath = path.join(vscode.workspace.rootPath, ".vscode", "c_cpp_properties.json");
+                if (!Utility.fileExistsSync(configFilePath)) {
+                    this.addIncludePath(true);
+                }
 
                 // Watch .piolibdeps and lib folders
                 const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/{.piolibdeps,lib}/**");
