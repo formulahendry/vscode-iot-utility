@@ -14,12 +14,13 @@ export class PlatformIO implements Disposable {
     private _debounceTimer: NodeJS.Timer;
     private _autoUpdateIncludesDisposables: Disposable[] = [];
     private _disposables: Disposable[] = [];
-    private _excludePaths: RegExp[] = [];
+    private _folderList: Set<string>;
 
     constructor() {
         this._pioTerminal = new PioTerminal();
         this.createStatusBarItems();
-        this.initializeAutoUpdateIncludes();
+        vscode.workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(), this, this._disposables);
+        this.configureAutoUpdateIncludes();
     }
 
     public dispose(): void {
@@ -122,29 +123,18 @@ export class PlatformIO implements Disposable {
         this._pioTerminal.onDidCloseTerminal(closedTerminal);
     }
 
-    private initializeAutoUpdateIncludes(): void {
-        this._excludePaths.push(/\.c$/);
-        this._excludePaths.push(/\.cpp$/);
-        this._excludePaths.push(/\.h$/);
-        this._excludePaths.push(/\.ino$/);
-        this._excludePaths.push(/\.json$/);
-        this._excludePaths.push(/\.md$/);
-        this._excludePaths.push(/\.txt$/);
-        this._excludePaths.push(RegExp("^(" + this.getEscapedPath(".pioenvs") + ")(\/|$)"));
-        this._excludePaths.push(RegExp("^(" + this.getEscapedPath(".vscode") + ")(\/|$)"));
-        this._excludePaths.push(RegExp("^" + this.getEscapedPath(".gitignore") + "$"));
-        this._excludePaths.push(RegExp("^" + this.getEscapedPath("platformio.ini") + "$"));
-        vscode.workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(), this, this._disposables);
-        this.configureAutoUpdateIncludes();
-    }
-
     private configureAutoUpdateIncludes(): void {
         const autoUpdateIncludes = vscode.workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
         if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
-            const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**");
+            this.buildFolderList();
+
+            // Watch .piolibdeps and lib folders
+            const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/{.piolibdeps,lib}/**");
             this._autoUpdateIncludesDisposables.push(fileSystemWatcher);
-            fileSystemWatcher.onDidCreate((e: vscode.Uri) => this.fileSystemDidChange(e), this, this._autoUpdateIncludesDisposables);
-            fileSystemWatcher.onDidDelete((e: vscode.Uri) => this.fileSystemDidChange(e), this, this._autoUpdateIncludesDisposables);
+            fileSystemWatcher.onDidCreate((e: vscode.Uri) => this.fileSystemDidCreate(e), this, this._autoUpdateIncludesDisposables);
+            fileSystemWatcher.onDidDelete((e: vscode.Uri) => this.fileSystemDidDelete(e), this, this._autoUpdateIncludesDisposables);
+
+            // Watch platformio.ini file
             const iniFileWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/platformio.ini");
             this._autoUpdateIncludesDisposables.push(iniFileWatcher);
             iniFileWatcher.onDidChange((e: vscode.Uri) => this.addIncludePath(true), this, this._autoUpdateIncludesDisposables);
@@ -152,22 +142,65 @@ export class PlatformIO implements Disposable {
         }
 
         if (!autoUpdateIncludes && this._autoUpdateIncludesEnabled) {
+            this._folderList = undefined;
             this.disposeAutoUpdateIncludes();
         }
 
         this._autoUpdateIncludesEnabled = autoUpdateIncludes;
     }
 
-    private getEscapedPath(input: string): string {
-        return ("\/" + path.join(vscode.workspace.rootPath, input).replace(/\\/g, "/")).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    private fileSystemDidCreate(e: vscode.Uri): void {
+        let parent = this.getParentFolder(e.path);
+        if (!this._folderList.has(parent)) {
+            this._folderList.add(parent);
+            this.debounceChanges();
+        }
+
+        try {
+            if (fs.statSync(e.fsPath).isDirectory()) {
+                if (!this._folderList.has(e.path)) {
+                    this._folderList.add(e.path);
+                    this.debounceChanges();
+                }
+            }
+        } catch (error) {
+            // Ignore errors, the file or folder was probably temporary and was
+            // renamed or deleted before we could check if it was a folder.
+        }
     }
 
-    private fileSystemDidChange(e: vscode.Uri) {
-        let skip: boolean = this._excludePaths.some((filter) => filter.test(e.path));
-        if (!skip) {
-            clearTimeout(this._debounceTimer);
-            this._debounceTimer = setTimeout(() => this.addIncludePath(true), 5000);
+    private fileSystemDidDelete(e: vscode.Uri): void {
+        if (this._folderList.has(e.path)) {
+            this._folderList.delete(e.path);
+            this._folderList.forEach((value: string) => {
+                if (value.startsWith(e.path)) {
+                    this._folderList.delete(value);
+                }
+            });
+            this.debounceChanges();
         }
+    }
+
+    private getParentFolder(path: string): string {
+        let reg = path.match(/^(.+)\/([^/]+)$/);
+        return reg[1];
+    }
+
+    private buildFolderList(): void {
+        vscode.workspace.findFiles("**").then((value: vscode.Uri[]) => {
+            this._folderList = new Set<string>();
+            value.forEach((element: vscode.Uri) => this._folderList.add(this.getParentFolder(element.path)));
+        });
+    }
+
+    private debounceChanges(): void {
+        clearTimeout(this._debounceTimer);
+        this._debounceTimer = setTimeout(() => this.foldersDidChange(), 5000);
+    }
+
+    private foldersDidChange(): void {
+        this.buildFolderList();
+        this.addIncludePath(true);
     }
 
     private disposeAutoUpdateIncludes(): void {
