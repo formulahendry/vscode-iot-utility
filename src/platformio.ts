@@ -138,7 +138,6 @@ export class PlatformIO implements Disposable {
                 const fileSystemWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/{.piolibdeps,lib}/**");
                 this._autoUpdateIncludesDisposables.push(fileSystemWatcher);
                 fileSystemWatcher.onDidCreate((e: vscode.Uri) => this.fileSystemDidCreate(e), this, this._autoUpdateIncludesDisposables);
-                fileSystemWatcher.onDidDelete((e: vscode.Uri) => this.fileSystemDidDelete(e), this, this._autoUpdateIncludesDisposables);
 
                 // Watch platformio.ini file
                 const iniFileWatcher: vscode.FileSystemWatcher = vscode.workspace.createFileSystemWatcher("**/platformio.ini");
@@ -160,30 +159,6 @@ export class PlatformIO implements Disposable {
         let parent = this.getParentFolder(e.path);
         if (!this._folderList.has(parent)) {
             this._folderList.add(parent);
-            this.debounceChanges();
-        }
-
-        try {
-            if (fs.statSync(e.fsPath).isDirectory()) {
-                if (!this._folderList.has(e.path)) {
-                    this._folderList.add(e.path);
-                    this.debounceChanges();
-                }
-            }
-        } catch (error) {
-            // Ignore errors, the file or folder was probably temporary and was
-            // renamed or deleted before we could check if it was a folder.
-        }
-    }
-
-    private fileSystemDidDelete(e: vscode.Uri): void {
-        if (this._folderList.has(e.path)) {
-            this._folderList.delete(e.path);
-            this._folderList.forEach((value: string) => {
-                if (value.startsWith(e.path)) {
-                    this._folderList.delete(value);
-                }
-            });
             this.debounceChanges();
         }
     }
