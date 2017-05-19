@@ -1,6 +1,6 @@
 "use strict";
 import * as vscode from "vscode";
-import { IncludePath } from "./IncludePath";
+import { IncludePath } from "./includePath";
 import { PlatformIO } from "./platformio";
 
 export function activate(context: vscode.ExtensionContext) {
