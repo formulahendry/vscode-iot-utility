@@ -1,10 +1,13 @@
 "use strict";
 import * as vscode from "vscode";
+import { IncludePath } from "./IncludePath";
 import { PlatformIO } from "./platformio";
 
 export function activate(context: vscode.ExtensionContext) {
     let platformio = new PlatformIO();
     context.subscriptions.push(platformio);
+    let includePath = new IncludePath();
+    context.subscriptions.push(includePath);
 
     context.subscriptions.push(vscode.commands.registerCommand("platformio.build", () => {
         platformio.build();
@@ -35,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand("platformio.addIncludePath", () => {
-        platformio.addIncludePath();
+        includePath.addIncludePath();
     }));
 
     context.subscriptions.push(vscode.window.onDidCloseTerminal((closedTerminal: vscode.Terminal) => {
