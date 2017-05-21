@@ -15,7 +15,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 * Search for library in [PlatformIO Library Registry](http://platformio.org/lib)
 * Install library from [PlatformIO Library Registry](http://platformio.org/lib)
 * Quick way to open PlatformIO Terminal
-* Add Include Path to `c_cpp_properties.json` for [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+* Automatically or manually add Include Path to `c_cpp_properties.json` for [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 * Combined `Build`, `Upload` and `Open Serial Monitor` with one command
 
 ## Prerequisites
@@ -68,6 +68,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 * `platformio.baudRate`: Set baud rate for Serial Monitor. (Default is **9600**)
 * `platformio.showHelpInfo`: Whether to show help info when opening PlatformIO Terminal. (Default is **true**)
+* `platformio.autoUpdateIncludes`: Whether to add Include Path to `c_cpp_properties.json` automatically. (Default is **true**)
 
 ## Telemetry data
 

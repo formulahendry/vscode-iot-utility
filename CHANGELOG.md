@@ -1,3 +1,6 @@
+## 0.1.1 (2017-05-21)
+* Add Include Path to `c_cpp_properties.json` automatically.
+
 ## 0.1.0 (2017-05-14)
 * Only activate extension when the workspace has a platformio.ini file
 
