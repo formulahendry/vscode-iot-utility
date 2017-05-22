@@ -14,8 +14,16 @@ export class IncludePath implements Disposable {
     private _folderList: Set<string>;
 
     constructor() {
-        workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(), this, this._disposables);
-        this.configureAutoUpdateIncludes();
+        workspace.onDidChangeConfiguration(() => this.configureAutoUpdateIncludes(true), this, this._disposables);
+        this.configureAutoUpdateIncludes(true);
+    }
+
+    public get isEnabled(): boolean {
+        return this._autoUpdateIncludesEnabled;
+    }
+
+    public set isEnabled(value: boolean) {
+        this.configureAutoUpdateIncludes(value);
     }
 
     public dispose(): void {
@@ -52,10 +60,10 @@ export class IncludePath implements Disposable {
         }
     }
 
-    private configureAutoUpdateIncludes(): void {
+    private configureAutoUpdateIncludes(enable: boolean): void {
         const cppExtension = extensions.getExtension("ms-vscode.cpptools");
         if (cppExtension) {
-            const autoUpdateIncludes = workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes");
+            const autoUpdateIncludes = workspace.getConfiguration("platformio").get<boolean>("autoUpdateIncludes") && enable;
             if (autoUpdateIncludes && !this._autoUpdateIncludesEnabled) {
                 this.buildFolderList();
                 const configFilePath = path.join(workspace.rootPath, ".vscode", "c_cpp_properties.json");
