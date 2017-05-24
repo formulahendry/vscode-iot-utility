@@ -30,7 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand("platformio.installLibrary", () => {
+        includePath.isEnabled = false;
         platformio.installLibrary();
+        includePath.addIncludePath(true);
+        includePath.isEnabled = true;
     }));
 
     context.subscriptions.push(vscode.commands.registerCommand("platformio.openTerminal", () => {

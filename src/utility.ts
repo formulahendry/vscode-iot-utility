@@ -1,6 +1,7 @@
 "use strict";
 import * as fs from "fs";
 import * as os from "os";
+import * as path from "path";
 import * as vscode from "vscode";
 
 export class Utility {
@@ -29,5 +30,13 @@ export class Utility {
         } else if (plat === "win32") {
             return "Win32";
         }
+    }
+
+    public static normalizePaths(paths: string[]): string[] {
+        let result: string[] = [];
+        paths.forEach((value) => {
+            result.push(path.resolve(path.normalize(value)));
+        });
+        return result;
     }
 }
