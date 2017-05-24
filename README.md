@@ -58,7 +58,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 ![openTerminal](images/openTerminal.png)
 
-* **Add Include Path to `c_cpp_properties.json` for C/C++ extension**: Press `F1` and then select/type `PlatformIO: Add Include Path to Settings`. Wait for some seconds, then the PlatformIO libraries will be automatically added into Include Path of `c_cpp_properties.json`
+* **Add Include Path to `c_cpp_properties.json` for C/C++ extension**: Press `F1` and then select/type `PlatformIO: Add Include Path to Settings`. Wait for some seconds, then the PlatformIO libraries will be automatically added into Include Path of `c_cpp_properties.json`. (**Note**: Do not modify `c_cpp_properties.json` manually since the `c_cpp_properties.json` will be fully regenerated and your manual changes will be lost.)
 
 * **Combined `Build`, `Upload` and `Open Serial Monitor` with one command**: Click the `Right Arrow` icon in the Status Bar at the bottom, or use shortcut `Ctrl+Alt+A`, or press `F1` and then select/type `PlatformIO: Build, Upload and Open Serial Monitor`. `Build`, `Upload` and `Open Serial Monitor` will be run one by one.
 
