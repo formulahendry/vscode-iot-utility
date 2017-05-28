@@ -1,3 +1,6 @@
+## 0.2.1 (2017-05-28)
+* [#8](https://github.com/formulahendry/vscode-platformio/issues/8): Add C/C++ extension as an extension dependency
+
 ## 0.2.0 (2017-05-24)
 * [#10](https://github.com/formulahendry/vscode-platformio/issues/10): Add license
 * [#7](https://github.com/formulahendry/vscode-platformio/issues/7): `c_cpp_properties.json` should be fully regenerated when adding Include Path

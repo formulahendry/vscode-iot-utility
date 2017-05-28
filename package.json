@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "PlatformIO",
     "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "formulahendry",
     "license": "MIT",
     "icon": "logo.png",
@@ -152,5 +152,8 @@
     },
     "dependencies": {
         "applicationinsights": "^0.19.0"
-    }
+    },
+    "extensionDependencies": [
+        "ms-vscode.cpptools"
+    ]
 }
