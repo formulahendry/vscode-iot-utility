@@ -1,3 +1,6 @@
+## 0.2.2 (2017-06-01)
+* Add note section in README.md 
+
 ## 0.2.1 (2017-05-28)
 * [#8](https://github.com/formulahendry/vscode-platformio/issues/8): Add C/C++ extension as an extension dependency
 

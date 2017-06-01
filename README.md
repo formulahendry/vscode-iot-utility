@@ -6,6 +6,14 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 *Atmel AVR & SAM, Espressif 8266 & 32, Freescale Kinetis, Intel ARC32, Lattice iCE40, Microchip PIC32, Nordic nRF51, NXP LPC, Silicon Labs EFM32, ST STM32, TI MSP430 & Tiva, Teensy, Arduino, ARM mbed, libOpenCM3, ESP8266, etc.*
 
+## Note
+
+There is an offical [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension maintained by PlatformIO.Org. You would expect more features and maintenance from this extension.
+
+If you want to build IoT projects connected to an IoT cloud service. You could take a look at [aka.ms/azure.iot](https://aka.ms/azure.iot) for Microsoft Azure IoT projects and resources.
+
+If you are already using Azure IoT services, you could use [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=formulahendry.azure-iot-toolkit) extension for better development experience.
+
 ## Features
 
 * Build PlatformIO project specified in [Project Configuration File platformio.ini](http://docs.platformio.org/en/stable/projectconf.html#projectconf)
