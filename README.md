@@ -12,7 +12,7 @@ There is an offical [PlatformIO IDE](https://marketplace.visualstudio.com/items?
 
 If you want to build IoT projects connected to an IoT cloud service. You could take a look at [aka.ms/azure.iot](https://aka.ms/azure.iot) for Microsoft Azure IoT projects and resources.
 
-If you are already using Azure IoT services, you could use [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=formulahendry.azure-iot-toolkit) extension for better development experience.
+If you are already using Azure IoT services, you could use [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) extension for better development experience.
 
 ## Features
 
