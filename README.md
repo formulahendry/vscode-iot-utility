@@ -8,7 +8,7 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 ## Note
 
-There is an offical [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension maintained by PlatformIO.Org. You would expect more features and maintenance from this extension.
+**There is an offical [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) extension maintained by PlatformIO.Org. You would expect more features and maintenance from this extension.**
 
 If you want to build IoT projects connected to an IoT cloud service. You could take a look at [aka.ms/azure.iot](https://aka.ms/azure.iot) for Microsoft Azure IoT projects and resources.
 

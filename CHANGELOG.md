@@ -1,3 +1,6 @@
+## 0.2.4 (2018-03-26)
+* Update logo and README to distinguish with the official extension
+
 ## 0.2.3 (2017-09-15)
 * Update link for official Azure IoT Toolkit
 
