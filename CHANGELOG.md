@@ -1,3 +1,6 @@
+## 0.2.5 (2018-04-08)
+* Rename the extension
+
 ## 0.2.4 (2018-03-26)
 * Update logo and README to distinguish with the official extension
 

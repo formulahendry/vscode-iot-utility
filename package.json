@@ -1,8 +1,8 @@
 {
     "name": "platformio",
-    "displayName": "PlatformIO",
-    "description": "PlatformIO for Visual Studio Code: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.2.4",
+    "displayName": "IoT Utility",
+    "description": "Develop IoT project based on PlatformIO: Arduino, Espressif, Raspberry Pi, mbed and more",
+    "version": "0.2.5",
     "publisher": "formulahendry",
     "license": "MIT",
     "icon": "logo.png",
@@ -15,10 +15,10 @@
     ],
     "keywords": [
         "IoT",
-        "MCU",
+        "mbed",
         "Arduino",
         "ESP8266",
-        "Terminal"
+        "PlatformIO"
     ],
     "bugs": {
         "url": "https://github.com/formulahendry/vscode-platformio/issues",
