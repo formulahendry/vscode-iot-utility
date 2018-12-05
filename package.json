@@ -1,8 +1,8 @@
 {
     "name": "platformio",
     "displayName": "IoT Utility",
-    "description": "Develop IoT project based on PlatformIO: Arduino, Espressif, Raspberry Pi, mbed and more",
-    "version": "0.2.5",
+    "description": "Develop IoT project based on PlatformIO: Arduino, ESP32, ESP8266, ARM mbed, STM32, Atmel AVR, Raspberry Pi and more",
+    "version": "0.2.6",
     "publisher": "formulahendry",
     "license": "MIT",
     "icon": "logo.png",
@@ -11,7 +11,7 @@
         "vscode": "^1.8.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "keywords": [
         "IoT",

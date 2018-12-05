@@ -1,3 +1,6 @@
+## 0.2.6 (2018-12-05)
+* Rename terminal name
+
 ## 0.2.5 (2018-04-08)
 * Rename the extension
 

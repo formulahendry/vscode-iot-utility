@@ -5,12 +5,12 @@ export class PioTerminal {
     private _terminal: vscode.Terminal;
 
     constructor() {
-        this._terminal = vscode.window.createTerminal("PlatformIO");
+        this._terminal = vscode.window.createTerminal("IoT Utility");
     }
 
     public show(): void {
         if (this._terminal === null) {
-            this._terminal = vscode.window.createTerminal("PlatformIO");
+            this._terminal = vscode.window.createTerminal("IoT Utility");
         }
         this._terminal.show();
     }
