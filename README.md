@@ -6,6 +6,19 @@ Integrate [PlatformIO](http://platformio.org/) into Visual Studio Code on top of
 
 *Atmel AVR & SAM, Espressif 8266 & 32, Freescale Kinetis, Intel ARC32, Lattice iCE40, Microchip PIC32, Nordic nRF51, NXP LPC, Silicon Labs EFM32, ST STM32, TI MSP430 & Tiva, Teensy, Arduino, ARM mbed, libOpenCM3, ESP8266, etc.*
 
+## What's New in v0.3.0
+
+**Discover devices connected via Ethernet, Wi-Fi and USB**: Press `F1` and then select/type `IoT Utility: Discover Device`. (Make sure you have installed [device-discovery-cli](https://github.com/Azure/device-discovery-cli))
+
+```
+	IP Address    MAC Address       Type                                    Host Name
+
+	10.172.14.69  08:00:27:d7:27:ef raspberrypi (Raspberry Pi)              raspberrypi
+	10.172.15.84  00:15:5d:0f:9d:01 tessel (Tessel 2)                       tessel2
+	10.172.14.219 00:0c:29:35:fa:9f huzzah (Adafruit HUZZAH ESP8266)
+	10.172.15.98  78:2b:cb:b5:1c:9c ?
+```
+
 ## Note
 
 If you want to build IoT projects connected to an IoT cloud service. You could take a look at [aka.ms/azure.iot](https://aka.ms/azure.iot) for Microsoft Azure IoT projects and resources.
@@ -23,6 +36,7 @@ If you are already using Azure IoT services, you could use [Azure IoT Toolkit](h
 * Quick way to open PlatformIO Terminal
 * Automatically or manually add Include Path to `c_cpp_properties.json` for [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 * Combined `Build`, `Upload` and `Open Serial Monitor` with one command
+* Discover devices connected via Ethernet, Wi-Fi and USB
 
 ## Prerequisites
 
@@ -69,6 +83,17 @@ If you are already using Azure IoT services, you could use [Azure IoT Toolkit](h
 * **Combined `Build`, `Upload` and `Open Serial Monitor` with one command**: Click the `Right Arrow` icon in the Status Bar at the bottom, or use shortcut `Ctrl+Alt+A`, or press `F1` and then select/type `PlatformIO: Build, Upload and Open Serial Monitor`. `Build`, `Upload` and `Open Serial Monitor` will be run one by one.
 
 ![buildUploadAndOpenSerialMonitor](images/buildUploadAndOpenSerialMonitor.png)
+
+* **Discover devices connected via Ethernet, Wi-Fi and USB**: Press `F1` and then select/type `IoT Utility: Discover Device`. (Make sure you have installed [device-discovery-cli](https://github.com/Azure/device-discovery-cli))
+
+```
+	IP Address    MAC Address       Type                                    Host Name
+
+	10.172.14.69  08:00:27:d7:27:ef raspberrypi (Raspberry Pi)              raspberrypi
+	10.172.15.84  00:15:5d:0f:9d:01 tessel (Tessel 2)                       tessel2
+	10.172.14.219 00:0c:29:35:fa:9f huzzah (Adafruit HUZZAH ESP8266)
+	10.172.15.98  78:2b:cb:b5:1c:9c ?
+```
 
 ## Settings
 

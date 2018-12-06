@@ -1,3 +1,6 @@
+## 0.3.0 (2018-12-06)
+* Discover devices connected via Ethernet, Wi-Fi and USB
+
 ## 0.2.6 (2018-12-05)
 * Rename terminal name
 

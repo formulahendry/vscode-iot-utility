@@ -40,6 +40,10 @@ export function activate(context: vscode.ExtensionContext) {
         platformio.openTerminal();
     }));
 
+    context.subscriptions.push(vscode.commands.registerCommand("platformio.discoverDevice", () => {
+        platformio.discoverDevice();
+    }));
+
     context.subscriptions.push(vscode.commands.registerCommand("platformio.addIncludePath", () => {
         includePath.addIncludePath();
     }));

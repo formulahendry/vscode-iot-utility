@@ -77,6 +77,15 @@ export class PlatformIO implements vscode.Disposable {
         AppInsightsClient.sendEvent("openTerminal", { showHelpInfo: showHelpInfo.toString() });
     }
 
+    public async discoverDevice() {
+        const deviceTypes = ["eth", "usb", "wifi"];
+        const deviceType = await vscode.window.showQuickPick(deviceTypes, { placeHolder: "Enter device type to discover", ignoreFocusOut: true });
+        if (deviceType) {
+            this._pioTerminal.showAndRun(`devdisco list --${deviceType}`);
+        }
+        AppInsightsClient.sendEvent("discoverDevice", { deviceType });
+    }
+
     public onDidCloseTerminal(closedTerminal: vscode.Terminal): void {
         this._pioTerminal.onDidCloseTerminal(closedTerminal);
     }

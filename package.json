@@ -2,7 +2,7 @@
     "name": "platformio",
     "displayName": "IoT Utility",
     "description": "Develop IoT project based on PlatformIO: Arduino, ESP32, ESP8266, ARM mbed, STM32, Atmel AVR, Raspberry Pi and more",
-    "version": "0.2.6",
+    "version": "0.3.0",
     "publisher": "formulahendry",
     "license": "MIT",
     "icon": "logo.png",
@@ -38,7 +38,8 @@
         "onCommand:platformio.searchLibrary",
         "onCommand:platformio.installLibrary",
         "onCommand:platformio.openTerminal",
-        "onCommand:platformio.addIncludePath"
+        "onCommand:platformio.addIncludePath",
+        "onCommand:platformio.discoverDevice"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -73,6 +74,10 @@
             {
                 "command": "platformio.addIncludePath",
                 "title": "PlatformIO: Add Include Path to Settings"
+            },
+            {
+                "command": "platformio.discoverDevice",
+                "title": "IoT Utility: Discover Device"
             }
         ],
         "keybindings": [{
